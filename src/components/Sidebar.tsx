@@ -42,15 +42,15 @@ const links: NavLink[] = [
   { href: "/help", label: "Help", icon: IconLifePreserverLine },
 ];
 
-export function Sidebar() {
+export function Sidebar({ avatarUrl }: { avatarUrl: string }) {
   const pathname = usePathname();
   const [collapsed, setCollapsed] = useState(false);
 
   return (
     <nav
       aria-label="Global navigation"
-      className={`sticky top-0 h-screen shrink-0 flex flex-col bg-background text-foreground font-(family-name:--font-lato) ${
-        collapsed ? "w-[54px]" : "w-[84px]"
+      className={`sticky top-0 h-screen shrink-0 flex flex-col bg-background text-[#00478f] font-(family-name:--font-lato) ${
+        collapsed ? "w-[54px]" : "w-[88px]"
       }`}
     >
       <Link href="/dashboard" className="flex justify-center py-3">
@@ -59,7 +59,7 @@ export function Sidebar() {
           alt="Dashboard"
           width={184}
           height={169}
-          className="h-auto w-2/3"
+          className="h-auto w-full"
         />
       </Link>
       <ul className="flex flex-1 flex-col overflow-y-auto">
@@ -72,7 +72,7 @@ export function Sidebar() {
                 href={link.href}
                 aria-current={isActive ? "page" : undefined}
                 title={collapsed ? link.label : undefined}
-                className={`flex flex-col items-center gap-[3px] px-1 py-[7px] text-center ${
+                className={`flex flex-col items-center gap-[4px] px-1 py-[7px] text-center ${
                   isActive
                     ? "bg-white text-global-nav-active"
                     : "hover:bg-black/20"
@@ -84,15 +84,19 @@ export function Sidebar() {
                       isActive ? "border-global-nav-active" : "border-white"
                     }`}
                   >
-                    <Icon />
+                    <img
+                      src={avatarUrl}
+                      alt=""
+                      className="size=full rounded-full object-cover"
+                    />
                   </span>
                 ) : (
-                  <span className="text-[26px] leading-none">
+                  <span className="text-[24px] leading-none">
                     <Icon />
                   </span>
                 )}
                 {!collapsed && (
-                  <span className="text-[13px] leading-tight">
+                  <span className="text-[14px] leading-tight">
                     {link.label}
                   </span>
                 )}

@@ -7,6 +7,7 @@ export const usersTable = pgTable("users", {
     .notNull()
     .unique()
     .default(sql`'U00' || lpad(floor(random() * 1000000)::int::text, 6, '0')`),
+  image_url: text("image_url"),
   first_name: text(),
   last_name: text(),
   email: text(),
