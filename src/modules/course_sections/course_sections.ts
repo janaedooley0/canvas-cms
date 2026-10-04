@@ -6,6 +6,18 @@ export enum TermCode {
   Summer = "50",
   Fall = "80",
 }
+
+export const termName: Record<string, string> = {
+  "10": "Spring",
+  "50": "Summer",
+  "80": "Fall",
+};
+
+export function formatSemester(code: string) {
+  const year = code.slice(0, 4);
+  const term = termName[code.slice(4)];
+  return `${term} Term ${year}`;
+}
 export const courseSections = pgTable("course_sections", {
   id: uuid("section_id").primaryKey().defaultRandom(),
   course_id: uuid("course_id")
