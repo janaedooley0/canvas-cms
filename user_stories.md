@@ -4,6 +4,11 @@ Canvas CMS stands for Course Instructor Management Software. It is a web applica
 
 To succeed in the completion of this project. We'll be utilizing user stories.
 
+## Basic UI/UX Features
+
+- [x] I want the ability to easily navigate the software between commonly used routes (home/courses/announcements/updates) (TO-DO: SideBar)
+- [ ] I want the ability to navigate the detailed sub-sections of each navbar component (TO-DO: secondary sidebar)
+
 ## Course Management (Feature)
 
 **User Story I**: I want the ability to add my courses to the web app and CRUD upon command.
