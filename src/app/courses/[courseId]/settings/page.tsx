@@ -20,7 +20,7 @@ export default async function CourseSettlingsPage({ params }: CoursePageProps) {
       status: coursesTable.status,
     })
     .from(coursesTable)
-    .where(eq(coursesTable.id, courseId));
+    .where(eq(coursesTable.public_id, Number(courseId)));
 
   return (
     <form action={updateCourse}>

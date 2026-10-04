@@ -1,0 +1,1 @@
+ALTER TABLE "users" ALTER COLUMN "uid" SET DEFAULT 'U00' || lpad(floor(random() * 1000000)::int::text, 6, '0');

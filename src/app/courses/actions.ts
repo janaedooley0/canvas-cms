@@ -2,16 +2,21 @@
 
 import { redirect } from "next/navigation";
 import { db } from "../../../db";
-import { coursesTable } from "@/index";
+import { coursesTable, pagesTable } from "@/index";
 import { eq } from "drizzle-orm";
 
 export async function createCourse() {
   const [course] = await db
     .insert(coursesTable)
     .values({})
-    .returning({ id: coursesTable.id });
+    .returning({ id: coursesTable.id, publicId: coursesTable.public_id });
 
-  redirect(`/courses/${course.id}`);
+  await db.insert(pagesTable).values({
+    courseId: course.id,
+    type: "home",
+  });
+
+  redirect(`/courses/${course.publicId}`);
 }
 
 export async function updateCourse(formData: FormData) {
@@ -20,10 +25,11 @@ export async function updateCourse(formData: FormData) {
   const subject = formData.get("subject") as string;
   const number = formData.get("number") as string;
 
-  await db
+  const [course] = await db
     .update(coursesTable)
     .set({ title, subject, number })
-    .where(eq(coursesTable.id, courseId));
+    .where(eq(coursesTable.id, courseId))
+    .returning({ publicId: coursesTable.public_id });
 
-  redirect(`/courses/${courseId}`);
+  redirect(`/courses/${course.publicId}`);
 }

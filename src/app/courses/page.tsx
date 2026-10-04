@@ -18,6 +18,7 @@ export default async function courses() {
   const courses = await db
     .select({
       courseId: coursesTable.id,
+      publicId: coursesTable.public_id,
       title: coursesTable.title,
       subject: coursesTable.subject,
       number: coursesTable.number,
@@ -33,7 +34,7 @@ export default async function courses() {
 
       <div className="grid grid-cols-3 gap-4">
         {courses.map((course) => (
-          <Link key={course.courseId} href={`/courses/${course.courseId}`}>
+          <Link key={course.courseId} href={`/courses/${course.publicId}`}>
             <Card
               key={course.courseId}
               className="relative mx-auto w-full max-w-sm pt-0"

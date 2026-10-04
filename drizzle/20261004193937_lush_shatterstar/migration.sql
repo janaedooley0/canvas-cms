@@ -1,0 +1,2 @@
+ALTER TABLE "courses" ADD COLUMN "public_id" integer GENERATED ALWAYS AS IDENTITY (sequence name "courses_public_id_seq" INCREMENT BY 1 MINVALUE 1 MAXVALUE 2147483647 START WITH 100000 CACHE 1);--> statement-breakpoint
+ALTER TABLE "courses" ADD CONSTRAINT "courses_public_id_key" UNIQUE("public_id");

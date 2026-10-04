@@ -13,6 +13,7 @@ export function CourseNav({ courseId }: CourseNavProps) {
   const links = [
     { href: base, label: "Home" },
     { href: `${base}/syllabus`, label: "Syllabus" },
+    { href: `${base}/modules`, label: "Modules" },
     { href: `${base}/assignments`, label: "Assignments" },
     { href: `${base}/grades`, label: "Grades" },
     { href: `${base}/files`, label: "Files" },

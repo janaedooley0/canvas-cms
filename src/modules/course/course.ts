@@ -14,6 +14,9 @@ export const courseStatus = pgEnum("course_status", [
 
 export const coursesTable = pgTable("courses", {
   id: uuid("course_id").primaryKey().defaultRandom(),
+  public_id: integer("public_id")
+    .generatedAlwaysAsIdentity({ startWith: 100000 })
+    .unique(),
   title: text("title").default("Default Course Name"),
   subject: text("subject").notNull().default("ENGL"),
   number: text("number").notNull().default("1234"),
